@@ -2,8 +2,9 @@ $(document).ready(onReady);
 
 function onReady() {
     
-    $('#btns').children().children().on('click', btnCheck);//checks to see if btn was pressed
+    getData();
 
+    $('#btns').children().children().on('click', btnCheck);//checks to see if btn was pressed
 
     $('#clear').on('click', clear); //runs function clear on click
 
@@ -22,6 +23,9 @@ let actionLastPressed = 0;
 
 let subPressed = 0; //stores whether submit button was last pressed
 const subAllowed = 1; //defines limit for submit button pressing
+
+let historyAmount = 0; //stores current number of results on screen
+let firstPageLoad = true; //used to detect if this is the first page load
 
 
 function btnCheck() {
@@ -144,7 +148,6 @@ function calculate(){
         data: objData
     }).then((data) =>{
         getData();
-        $('#histClear').prop("disabled", false);
     });//sends info to server
 
     decEntered = 0; //clears decimal entered
@@ -159,8 +162,9 @@ function getData(){
         url: '/getData'
     }).then((response) =>{
         updateHistory(response);
-        if (response[response.length - 1].result === null){
-            $('#number1').val(`0`);
+        // if (response[response.length - 1].result === null){
+        if (firstPageLoad === true) {
+            firstPageLoad = false;
         }
         else{
             $('#number1').val(`${response[response.length-1].result}`);
@@ -175,13 +179,21 @@ function getData(){
 function updateHistory(data){
     $('#result').empty()
     if (data !== []) {
-        let element = data[data.length - 1];
-        if (element.result === null) {
-            $('#result').append(`Result: 0`);
+        if (data.result === null) {
+            let element = data[data.length - 1];
             $('#history').append(`<li> ${element.value1} ${element.action} ${element.value2} = 0 <button class="rerun" data-result="0">Rerun</button></li>`);
         } else {
-            $('#result').append(`Result: ${element.result}`);
-            $('#history').append(`<li> ${element.value1} ${element.action} ${element.value2} = ${element.result} <button class="rerun" data-result="${element.result}">Rerun</button></li>`);
+            if (firstPageLoad === true) {
+            }else{
+                $('#result').append(`Result: ${data[data.length - 1].result}`);
+            }
+            $('#histClear').prop("disabled", false);
+            console.log('historyAmount:', historyAmount);
+            for (let index = historyAmount; index < data.length; index++) {
+                let element = data[index];
+                $('#history').append(`<li> ${element.value1} ${element.action} ${element.value2} = ${element.result} <button class="rerun" data-result="${element.result}">Rerun</button></li>`);
+                historyAmount++;
+            }
         }
     }
 
@@ -202,8 +214,10 @@ function clearHistory(){
     }).then((response) => {
         getData();
     })
+    $('#number1').val('');
     $('#history').empty()
     $('#histClear').prop("disabled", true);
+    historyAmount = 0
 };//end clearHistory
 
 

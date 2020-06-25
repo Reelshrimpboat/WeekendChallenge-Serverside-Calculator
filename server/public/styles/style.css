@@ -105,12 +105,29 @@ body{
     float: right;
     width: 60px;
 }
+
+ul{
+    list-style: none;
+}
+
 li{
     font-weight: 600;
     margin: 4px 0px;
-    width: 260px;
 }
+
 .rerun{
     font-weight: 600;
     vertical-align: top;
+}
+
+#history {
+    padding: 4px 14px;
+    display: inline-block;
+    background-color: #9BC1CE;
+    border-radius: 6px;
+    border: 1px #9BC1CE inset;
+    width: 280px;
+}
+#historyName{
+    margin: 0px;
 }

@@ -1,0 +1,116 @@
+body{
+    margin: 0px;
+    width: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.wrapper{
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    background-color: grey;
+    padding: 0px;
+    border: 2px lightgrey outset;
+}
+
+#header{
+    text-align: center;
+    font-size: 2.6em;
+    margin: 0px;
+    padding: 0px 0px 10px;
+    border-bottom: 1px red solid;
+}
+
+#top{
+    background-color: black;
+    color: white;
+    padding: 20px 0px 10px;
+}
+
+#calculatorSection{
+    text-align: center;
+}
+
+.inputBar{
+    margin: 20px 0px 10px;
+    padding: 4px 14px;
+    display: inline-block;
+    background-color: #9BC1CE;
+    border-radius: 6px;
+    border: 1px #9BC1CE inset;
+}
+
+#number1{
+    margin: 0px;
+    width: 250px;
+    font-size: 1.6em;
+    color: #1B1B1B;
+    margin: 0px;
+    display: inline-block;
+    padding: 4px;
+    border: none;
+}
+
+#clear{
+    width: 39px;
+    height: 39px;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 0px;
+    display: inline-block;
+    padding: 4px;
+    border: none;
+    background-color: red;
+    color: white;
+    border: 1px outset;
+}
+
+.inBtn {
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+    background-color: #1B1B1B;
+    color: white;
+    border: 2px dimgray outset;
+    font-weight: 600;
+    font-size: 1.8em;
+}
+
+.actBtn {
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+    background-color: lightgray;
+    border: 2px outset;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: black;
+}
+
+.calcRow{
+    margin: 5px 10px;
+    width: 320px;
+}
+
+#resultSection{
+    margin: 20px 18px;
+}
+
+#historySection{
+    margin: 20px 18px;
+}
+
+.rerun{
+    float: right;
+    width: 60px;
+}
+li{
+    font-weight: 600;
+    margin: 4px 0px;
+    width: 260px;
+}
+.rerun{
+    font-weight: 600;
+    vertical-align: top;
+}
